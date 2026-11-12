@@ -1,0 +1,111 @@
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("PlusJakartaSans.ttf") format("truetype");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+:root {
+  --accent: #3d7bf5;
+  --accent-deep: #1e3fd8;
+  --orange: #f39a55;
+  --ink: #141a33;
+  --muted: #5b6380;
+  --surface: #f4f7ff;
+  --card: #ffffff;
+  --line: #e2e8f7;
+  --hero-from: #2148e8;
+  --hero-to: #0b1a6b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #eef1ff;
+    --muted: #a6aec9;
+    --surface: #0b1022;
+    --card: #141b33;
+    --line: #232c4d;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--surface);
+  line-height: 1.6;
+}
+
+a { color: var(--accent); }
+
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+/* Üst çubuk */
+.top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0;
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; font-weight: 800; font-size: 18px; }
+.brand img { width: 36px; height: 36px; border-radius: 9px; }
+.top nav a { margin-left: 18px; text-decoration: none; font-weight: 600; font-size: 15px; color: inherit; opacity: .85; }
+
+/* Tanıtım bandı */
+.hero {
+  color: #fff;
+  background: radial-gradient(120% 90% at 50% 0%, var(--hero-from), var(--hero-to));
+  padding-bottom: 72px;
+}
+.hero .top nav a { color: #fff; }
+.hero-body { text-align: center; padding-top: 36px; }
+.hero-body .icon { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 18px 50px rgba(0, 0, 0, .35); }
+.hero h1 { font-size: clamp(32px, 6vw, 54px); line-height: 1.12; margin: 26px 0 14px; font-weight: 800; letter-spacing: -.02em; }
+.hero p.lead { font-size: clamp(17px, 2.4vw, 21px); opacity: .88; max-width: 620px; margin: 0 auto; }
+.badge {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 30px;
+  padding: 14px 24px; border-radius: 16px; background: #000; color: #fff;
+  font-weight: 700; text-decoration: none; font-size: 16px;
+}
+.badge small { display: block; font-weight: 500; font-size: 11px; opacity: .8; line-height: 1.1; }
+.badge svg { width: 26px; height: 26px; fill: #fff; }
+
+/* Özellikler */
+section { padding: 64px 0; }
+h2 { font-size: clamp(26px, 4vw, 36px); line-height: 1.2; margin: 0 0 10px; letter-spacing: -.01em; }
+.sub { color: var(--muted); margin: 0 0 32px; font-size: 17px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.feature { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; }
+.feature .emoji { font-size: 30px; }
+.feature h3 { margin: 10px 0 6px; font-size: 18px; }
+.feature p { margin: 0; color: var(--muted); font-size: 15px; }
+
+.shots { display: flex; gap: 18px; overflow-x: auto; padding: 4px 2px 18px; scroll-snap-type: x mandatory; }
+.shots img {
+  width: 230px; flex: none; border-radius: 30px; scroll-snap-align: start;
+  border: 1px solid var(--line); box-shadow: 0 14px 40px rgba(20, 30, 80, .15);
+}
+
+/* Metin sayfaları */
+.doc { max-width: 760px; margin: 0 auto; padding: 8px 20px 64px; }
+.doc h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.2; margin: 24px 0 6px; letter-spacing: -.01em; }
+.doc .meta { color: var(--muted); margin: 0 0 28px; }
+.doc h2 { font-size: 22px; margin: 36px 0 10px; }
+.doc table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 15px; display: block; overflow-x: auto; }
+.doc th, .doc td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.doc th { font-weight: 700; background: var(--card); }
+.doc li { margin: 6px 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px 22px; margin: 16px 0; }
+.card h3 { margin: 0 0 6px; font-size: 18px; }
+.card p { margin: 0; color: var(--muted); }
+
+footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+footer a { color: inherit; margin-right: 18px; }
+
+@media (max-width: 560px) {
+  .top nav a { margin-left: 12px; font-size: 14px; }
+  .shots img { width: 200px; }
+}
