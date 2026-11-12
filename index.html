@@ -1,66 +1,84 @@
 <!doctype html>
-<html lang="tr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hey JENGO! · JAI ile İngilizce konuş</title>
-  <meta name="description" content="Hey JENGO! ile yapay zekâ arkadaşın JAI'yle her gün İngilizce konuş; A1'den C2'ye dersler, oyunlar ve ilerleme takibi.">
-  <link rel="icon" href="/assets/favicon.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/site.css">
-</head>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><meta name="robots" content="noindex,nofollow"><meta name="description" content="JAI ile konuş. Oyunlarla pratik yap. heyJengo ile İngilizceyi hayatına kat."><title>heyJengo — İngilizceyi hayatına kat.</title><link rel="icon" href="/assets/favicon.png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="stylesheet" href="styles.css?v=4"><link rel="stylesheet" href="footer-v4.css?v=4"><link rel="stylesheet" href="motion-v4.css?v=4"><script src="script.js?v=4" defer></script><script src="motion-v4.js?v=4" defer></script></head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <div class="top">
-        <a class="brand" href="/"><img src="/assets/icon-512.png" alt="">Hey JENGO!</a>
-        <nav><a href="/gizlilik/">Gizlilik</a><a href="/destek/">Destek</a></nav>
-      </div>
-      <div class="hero-body">
-        <img class="icon" src="/assets/icon-512.png" alt="Hey JENGO! uygulama simgesi">
-        <h1>JAI ile her gün<br>İngilizce konuş</h1>
-        <p class="lead">Yapay zekâ arkadaşın JAI ile konuşarak pratik yap; A1'den C2'ye dersler, eğlenceli oyunlar ve ilerleme takibiyle İngilizceni geliştir.</p>
-        <a class="badge" href="#" aria-label="Yakında App Store'da">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74s1.78.74 2.99.72c1.24-.02 2.02-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.02.61-2.67 1.37-.58.67-1.09 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.28z"/></svg>
-          <span><small>Çok yakında</small>App Store'da</span>
-        </a>
+<svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol><symbol id="phone" viewBox="0 0 24 24"><rect x="6.5" y="2" width="11" height="20" rx="3"/><path d="M10 5h4m-3 14h2"/></symbol><symbol id="mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"/></symbol><symbol id="game" viewBox="0 0 24 24"><path d="M8 6h8c3 0 4 2 5 7s0 7-2 6l-4-3H9l-4 3c-2 1-3-1-2-6s2-7 5-7Z"/><path d="M8 9v5m-2.5-2.5h5m5-1h.01m2 3h.01"/></symbol><symbol id="chart" viewBox="0 0 24 24"><path d="M5 19v-5m7 5V9m7 10V4"/></symbol><symbol id="book" viewBox="0 0 24 24"><path d="M12 5C8 2 3 3 3 3v16s5-1 9 2c4-3 9-2 9-2V3s-5-1-9 2Zm0 0v16"/></symbol><symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z"/></symbol><symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 10-13h-8Z"/></symbol><symbol id="flame" viewBox="0 0 24 24"><path d="M13 2c2 6-1 7 1 10 2-1 3-3 3-4 7 8 2 14-5 14C3 22 2 14 7 9c0 4 2 4 3 4-1-4 3-6 3-11Z"/></symbol><symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol><symbol id="menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol><symbol id="play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8Z"/></symbol><symbol id="repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4M3 11V8a2 2 0 0 1 2-2h16M7 22l-4-4 4-4m14-1v3a2 2 0 0 1-2 2H3"/></symbol>
+</defs></svg>
+<a class="skip" href="#ozellikler">İçeriğe geç</a>
+<div class="announcement"><a href="#jai"><svg class="icon"><use href="#spark"/></svg><span>İngilizce için yeni bir başlangıç.</span><b>JAI ile tanış <span aria-hidden="true">→</span></b></a><button class="announcement-close icon-button" aria-label="Duyuruyu kapat"><svg class="icon"><use href="#close"/></svg></button></div>
+<div class="nav-sentinel" aria-hidden="true"></div>
+<header class="site-header"><a class="brand" href="#top" aria-label="heyJengo ana sayfa"><img src="assets/app-icon.webp" width="31" height="31" alt=""><span>heyJengo</span></a><nav class="desktop-nav" aria-label="Ana menü"><a href="#ozellikler">Özellikler</a><a href="#jai">JAI</a><a href="#oyunlar">Oyunlar</a><a href="#gelisim">Gelişimin</a><a href="#sorular">Sık sorulanlar</a></nav><button class="nav-cta" data-open="app">Uygulamayı keşfet <svg class="icon"><use href="#phone"/></svg></button><button class="menu-toggle icon-button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobile-nav"><svg class="icon"><use href="#menu"/></svg></button><nav id="mobile-nav" class="mobile-nav" aria-label="Mobil menü" hidden><a href="#ozellikler">Özellikler</a><a href="#jai">JAI ile konuş</a><a href="#oyunlar">Oyunlar</a><a href="#gelisim">Gelişimin</a><a href="#sorular">Sık sorulanlar</a></nav></header>
+<main id="top">
+<section class="hero-copy"><h1>İngilizceyi hayatına kat.</h1><p>JAI ile konuş. Oyunlarla pratik yap. Kendi seviyenden başla, her gün bir adım ilerle. İngilizce, artık gününün bir parçası.</p><div class="hero-badges"><div><span class="badge-icon levels-icon">Aa</span><span><b>A1’den C2’ye</b><small>Kendi seviyende</small></span></div><div><img src="assets/app-icon.webp" width="34" height="34" alt=""><span><b>JAI yanında</b><small>Konuşarak öğren</small></span></div></div></section>
+<section class="scrolly" aria-label="heyJengo ile konuş, oyna ve ilerle"><div class="phase-zone" data-zone="0" aria-hidden="true"></div><div class="phase-zone" data-zone="1" aria-hidden="true"></div><div class="phase-zone" data-zone="2" aria-hidden="true"></div><div class="hero-stage" data-phase="0"><div class="stage-dark"></div><div class="stage-glow"></div><div class="scene-inner"><div class="notification n1"><span class="notification-icon blue"><svg class="icon"><use href="#mic"/></svg></span><span><strong data-note-title="0">JAI konuşmaya hazır</strong><small data-note-detail="0">Bugün neler yaptığını İngilizce anlat.</small></span></div><div class="notification n2"><span class="notification-icon coral"><svg class="icon"><use href="#spark"/></svg></span><span><strong data-note-title="1">“Hi! How was your day?”</strong><small data-note-detail="1">Sohbet bir “hello” ile başlar.</small></span></div><div class="notification n3"><span class="notification-icon violet"><svg class="icon"><use href="#book"/></svg></span><span><strong data-note-title="2">Yeni bir kelime, yeni bir kapı</strong><small data-note-detail="2">Kelimeleri konuşurken keşfet.</small></span></div><div class="notification n4"><span class="notification-icon mint"><svg class="icon"><use href="#check"/></svg></span><span><strong data-note-title="3">Kendi hızında, kendi sesinle</strong><small data-note-detail="3">Sesli veya yazılı pratik yap.</small></span></div><div class="notification n5"><span class="notification-icon yellow"><svg class="icon"><use href="#bolt"/></svg></span><span><strong data-note-title="4">Küçük adımlar. Büyük fark.</strong><small data-note-detail="4">Günlük hedefini tamamlamaya yaklaş.</small></span></div><div class="notification n6"><span class="notification-icon blue"><svg class="icon"><use href="#repeat"/></svg></span><span><strong data-note-title="5">Her gün biraz daha rahat</strong><small data-note-detail="5">İngilizceyi alışkanlığa dönüştür.</small></span></div>
+<div class="hand-stack"><div class="hand-motion"><img class="hand-frame" src="assets-v3/hero-hand-17pro.webp" alt="" width="916" height="1717" fetchpriority="high"><div class="device hero-device" data-model="iPhone 17 Pro"><div class="device-display hand-screen"><img class="hand-img is-active" data-hand="0" src="assets-v2/screens/58-jai-chat.webp" alt="JAI ile gerçek uygulama sohbet ekranı" width="1206" height="2622" fetchpriority=high><img class="hand-img " data-hand="1" src="assets-v2/screens/37-game-pizza.webp" alt="Pizza Dükkânı gerçek oyun ekranı" width="1206" height="2622" ><img class="hand-img " data-hand="2" src="assets-v2/screens/63-profile.webp" alt="heyJengo gerçek profil ve ilerleme ekranı" width="1206" height="2622" ></div></div></div></div>
+<div class="scene-caption" aria-live="polite"><span class="caption-dot"></span><span id="scene-label">Konuşmaya başlamak bu kadar kolay.</span></div></div><div class="scene-tabs" role="group" aria-label="Telefon ekranını seç"><button data-scene="0" aria-pressed="true"><svg class="icon"><use href="#mic"/></svg>Konuş</button><button data-scene="1" aria-pressed="false"><svg class="icon"><use href="#game"/></svg>Oyna</button><button data-scene="2" aria-pressed="false"><svg class="icon"><use href="#chart"/></svg>İlerle</button><span></span><a href="#ozellikler"><svg class="icon"><use href="#spark"/></svg>Keşfet</a></div></div></section>
+<section id="ozellikler" class="features dark-section"><div class="container"><div class="section-heading reveal"><span class="eyebrow">TAM SANA GÖRE</span><h2>İngilizce için ihtiyacın olan<br class="desktop-break"> her şey. Tek bir yerde.</h2><p>Bir ders, küçük bir oyun, gerçek bir sohbet. heyJengo öğrenmeyi gününe sığdırır; sen de her seferinde bir adım daha ileri gidersin.</p></div>
+<article class="feature-wide reveal">
+<div class="feature-copy"><span class="small-label">SANA AİT BİR ÖĞRENME YOLU</span><h3>Bir sonraki adımın<br>hep belli.</h3><p>Kendi seviyenden başla. Küçük derslerle ilerle, yeni konuların kapısını aç. İngilizceyi adım adım hayatına kat.</p><div class="mini-levels"><span>A1</span><i></i><span>A2</span><i></i><span>B1</span><i></i><span>…</span></div></div>
+<div class="route-art"><div class="route-orbit" aria-hidden="true"></div><div data-model="iPhone 17 Pro" class="device route-back"><div class="device-display"><img src="assets-v2/screens/09-home-learn.webp" alt="heyJengo öğren ana ekranı" width="1206" height="2622" loading="lazy"></div></div><div data-model="iPhone 17 Pro" class="device route-front"><div class="device-display"><img src="assets-v2/screens/12-unit-page.webp" alt="İngilizce ünite ve ders yolu" width="1206" height="2622" loading="lazy"></div></div><span class="floating-label route-label"><svg class="icon"><use href="#check"/></svg>Bir adım daha.</span></div></article>
+<div class="feature-pair">
+<article class="feature-small vocab-feature reveal"><span class="small-label">KELİMELER SENİNLE</span><h3>Bir kez öğren.<br>Her gün hatırla.</h3><p>Kelime kartları, örnek cümleler ve aralıklı tekrar. İhtiyacın olan kelime, tam zamanında aklına gelsin.</p><div class="vocab-art"><div data-model="iPhone 17 Pro" class="device vocab-back"><div class="device-display"><img src="assets-v2/screens/60-dictionary-word.webp" alt="Sözlükte anlam, örnekler ve kullanım" width="1206" height="2622" loading="lazy"></div></div><div data-model="iPhone 17 Pro" class="device vocab-front"><div class="device-display"><img src="assets-v2/screens/34-flashcard-back.webp" alt="Kelime kartının açıklaması ve aralıklı tekrar" width="1206" height="2622" loading="lazy"></div></div><span class="word-float word-a">hello<span>merhaba</span></span><span class="word-float word-b">discover<span>keşfetmek</span></span></div></article>
+<article class="feature-small listening-feature reveal"><span class="small-label">KULAĞIN DA ALIŞSIN</span><h3>Duy. Anla.<br>Cevap ver.</h3><p>Dinleme alıştırmalarıyla İngilizcenin ritmini yakala. Her yeni ses, kendine güvenmek için bir neden.</p><div class="listening-art"><div class="sound-rings" aria-hidden="true"></div><div data-model="iPhone 17 Pro" class="device listen-phone"><div class="device-display"><img src="assets-v2/screens/24-exercise-listening.webp" alt="Gerçek dinleme alıştırması ekranı" width="1206" height="2622" loading="lazy"></div></div><div class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></article>
+</div></div></section>
+<section id="jai" class="jai-section"><div class="container split-section"><div class="section-copy reveal"><span class="eyebrow">BİR “HELLO” YETER</span><h2>Konuşacak biri<br>hep var.</h2><p>JAI ile İngilizceyi sesli ya da yazılı pratik et. Gününden bahset, bir yolculuğa hazırlan veya sadece sohbet et.</p><p class="subtle">Kusursuz cümleyi bekleme.<br>İlk cümleyle başla.</p><button class="pill-button" data-open="conversation"><svg class="icon"><use href="#play"/></svg>Örnek konuşmayı dene</button></div><div class="jai-art reveal"><div class="jai-halo" aria-hidden="true"></div><img class="creative jai-orbit" src="assets-v2/creative/jai-orbit.webp" alt="" width="1536" height="1536" loading="lazy"><div data-model="iPhone 17 Pro" class="device jai-phone"><div class="device-display"><img src="assets-v2/screens/58-jai-chat.webp" alt="JAI ile İngilizce konuşma ekranı" width="1206" height="2622" loading="lazy"></div></div><span class="floating-label jai-label"><span class="online-dot"></span>Hey! Let's talk.</span></div></div></section>
+<section id="oyunlar" class="games-section"><div class="container"><div class="section-heading reveal"><span class="eyebrow">BİR TUR DAHA?</span><h2>Oyun gibi hissettirir.<br>İngilizceni geliştirir.</h2><p>Pizza siparişi al, kelimeleri eşleştir, bir gizemi çöz. Her oyun, öğrendiklerini kullanmak için yeni bir fırsat.</p></div><div class="game-showcase reveal"><img class="creative games-world" src="assets-v2/creative/games-world.webp" alt="" width="1536" height="1536" loading="lazy"><div data-model="iPhone 17 Pro" class="device pizza-phone"><div class="device-display"><img src="assets-v2/screens/37-game-pizza.webp" alt="Pizza Dükkânı: İngilizce sipariş oyunu" width="1206" height="2622" loading="lazy"></div></div><div data-model="iPhone 17 Pro" class="device detective-phone"><div class="device-display"><img src="assets-v2/screens/46-game-detective-question.webp" alt="Kayıp Mücevher Vakası: dedektif oyunu" width="1206" height="2622" loading="lazy"></div></div><div data-model="iPhone 17 Pro" class="device picture-phone"><div class="device-display"><img src="assets-v2/screens/42-game-picture.webp" alt="Görsel kelime eşleştirme oyunu" width="1206" height="2622" loading="lazy"></div></div></div><div class="game-play-row"><div class="play-copy"><span class="eyebrow">ŞİMDİ SIRA SENDE</span><h3>Küçük bir oyun.<br>Yeni bir kelime.</h3><p>Bir turla başla.<br>Bir sonraki tur kendiliğinden gelir.</p></div><div class="quiz-card reveal"><span class="quiz-label"><svg class="icon"><use href="#game"/></svg> KÜÇÜK BİR DENEME</span><small>Bu kelime sana ne söylüyor?</small><h3>discover</h3><div class="quiz-answers"><button data-answer="wrong">Hatırlamak <span>A</span></button><button data-answer="correct">Keşfetmek <span>B</span></button><button data-answer="wrong">Beklemek <span>C</span></button></div><p class="quiz-feedback" aria-live="polite">Bir cevap seç ve dene.</p><button class="quiz-reset" hidden>Yeniden dene <svg class="icon"><use href="#repeat"/></svg></button></div></div><div class="game-tags reveal"><span>Pizza Dükkânı</span><span>Hafıza Kartları</span><span>Çengel Bulmaca</span><span>60 Saniye</span><span>Kayıp Mücevher Vakası</span></div></div></section>
+<section id="gelisim" class="progress-section dark-section"><div class="container"><div class="section-heading reveal"><span class="eyebrow">YOLCULUK SANA AİT</span><h2>Dün bir kelime.<br>Bugün bir cümle.<br><span>Yarın, kim bilir?</span></h2><p>Nereden başladığını gör. Geldiğin yeri fark et.<br>Her küçük adımın bir karşılığı var.</p></div><div class="progress-art reveal"><div class="progress-halo" aria-hidden="true"></div><img class="creative progress-rise" src="assets-v2/creative/progress-rise.webp" alt="" width="1536" height="1536" loading="lazy"><div data-model="iPhone 17 Pro" class="device summary-phone"><div class="device-display"><img src="assets-v2/screens/28-lesson-summary.webp" alt="Ders tamamlama ve kazanılan XP ekranı" width="1206" height="2622" loading="lazy"></div></div><div data-model="iPhone 17 Pro" class="device profile-phone"><div class="device-display"><img src="assets-v2/screens/63-profile.webp" alt="Profil, öğrenme istatistikleri ve başarılar" width="1206" height="2622" loading="lazy"></div></div><span class="floating-label progress-label"><svg class="icon"><use href="#flame"/></svg>Devam etmek güzel.</span></div><div class="level-journey reveal" aria-label="A1, A2, B1, B2, C1, C2 İngilizce seviyeleri"><div><b>A1</b><small>İlk adımlar</small></div><div><b>A2</b><small>Temeller</small></div><div><b>B1</b><small>Kendini anlat</small></div><div><b>B2</b><small>Daha özgür</small></div><div><b>C1</b><small>Derinleş</small></div><div><b>C2</b><small>Ustalaş</small></div></div><div class="progress-bottom reveal"><svg class="icon"><use href="#flame"/></svg><p>Mükemmel olmak zorunda değilsin.<br><b>Devam etmen yeter.</b></p></div></div></section>
+<section id="sorular" class="faq-section container"><div class="section-heading reveal"><h2>Aklında bir soru mu var?</h2></div><div class="faq-list"><details><summary>heyJengo ile neler yapabilirim?<span>+</span></summary><p>Seviyene uygun İngilizce derslerinde ilerleyebilir, JAI ile sesli veya yazılı pratik yapabilir, kelime kartlarını tekrar edebilir ve oyunlarla öğrendiklerini pekiştirebilirsin.</p></details><details><summary>İngilizcem başlangıç seviyesinde. Bana uygun mu?<span>+</span></summary><p>heyJengo’da A1’den C2’ye seviyeler bulunur. Seviye tespitiyle başlayabilir ve kendi seviyene uygun ders yolunda ilerleyebilirsin.</p></details><details><summary>JAI ile nasıl pratik yapabilirim?<span>+</span></summary><p>JAI ile sesli veya yazılı İngilizce sohbet edebilirsin. Gündelik hayat, seyahat ve iş hayatı gibi konular üzerinden pratik yapabilirsin.</p></details><details><summary>Bu sayfadaki ekranları deneyebilir miyim?<span>+</span></summary><p>Bu sayfa heyJengo için hazırlanan ilk web tasarım seçeneğidir. Örnek konuşma ve kelime oyunu burada denenebilir. Telefon mockuplarının içinde heyJengo uygulamasının gerçek ekran görüntüleri yer alır. Çevrelerindeki yaratıcı sahneler bu tasarım için üretilmiştir.</p></details></div></section>
+<section class="hj-v4-closing" aria-labelledby="hj-v4-closing-title">
+  <div class="hj-v4-wrap hj-v4-closing-grid">
+    <div class="hj-v4-closing-copy">
+      <p class="hj-v4-kicker">SIRADAKİ ADIM SENİN</p>
+      <h2 id="hj-v4-closing-title">Bir <span>“hello”</span> ile<br>başlar her şey.</h2>
+      <p class="hj-v4-intro">Yeni bir kelime. Küçük bir oyun. Kendine güvenerek kurduğun ilk cümle. İngilizceyi hayatına katmanın bir sürü yolu var.</p>
+      <div class="hj-v4-actions">
+        <button class="hj-v4-button hj-v4-button-primary" type="button" data-open="app">heyJengo’yu keşfet <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></button>
+        <button class="hj-v4-button hj-v4-button-secondary" type="button" data-open="conversation"><svg class="icon" aria-hidden="true"><use href="#play"/></svg>Örnek konuşmayı dene</button>
       </div>
     </div>
-  </header>
-
-  <main>
-    <section>
-      <div class="wrap">
-        <h2>Konuşarak öğren</h2>
-        <p class="sub">Ezber değil, gerçek pratik. Her gün birkaç dakika yeter.</p>
-        <div class="features">
-          <div class="feature"><div class="emoji">💬</div><h3>JAI ile sohbet</h3><p>Yazarak ya da sesli konuş; JAI seviyene uygun cevap verir, hatalarını nazikçe düzeltir.</p></div>
-          <div class="feature"><div class="emoji">📚</div><h3>A1'den C2'ye dersler</h3><p>Diyaloglar, kelimeler, dil bilgisi ve telaffuz; seviye testiyle doğru yerden başla.</p></div>
-          <div class="feature"><div class="emoji">🎮</div><h3>Oyunlarla pekiştir</h3><p>Harf çarkı, eşleştirme, dinle ve yaz gibi oyunlarla kelimeler kalıcı olsun.</p></div>
-          <div class="feature"><div class="emoji">🔥</div><h3>Seri ve ilerleme</h3><p>Günlük hedefin, serin, haftalık lig ve kelime kartlarınla ilerlemeni gör.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section style="padding-top:0">
-      <div class="wrap">
-        <h2>Uygulamadan görüntüler</h2>
-        <p class="sub">iPhone için tasarlandı.</p>
-        <div class="shots">
-          <img src="/assets/01-ana-sayfa.jpg" alt="Ana sayfa: günlük seri ve dersler" loading="lazy">
-          <img src="/assets/02-jai-sohbet.jpg" alt="JAI ile İngilizce sohbet" loading="lazy">
-          <img src="/assets/03-ders-diyalog.jpg" alt="Ders diyaloğu" loading="lazy">
-          <img src="/assets/05-oyun-harf-carki.jpg" alt="Harf çarkı kelime oyunu" loading="lazy">
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div><a href="/gizlilik/">Gizlilik Politikası ve KVKK</a><a href="/destek/">Destek</a></div>
-      <div>© 2026 IMF Elektronik İthalat İhracat San. ve Tic. Ltd. Şti.</div>
+    <div class="hj-v4-conversation" aria-hidden="true">
+      <img class="hj-v4-app-tile" src="assets/app-icon.webp" alt="" width="92" height="92" loading="lazy">
+      <span class="hj-v4-bubble hj-v4-hello">hello.</span>
+      <span class="hj-v4-bubble hj-v4-hey">hey!</span>
+      <span class="hj-v4-conversation-dot"></span>
     </div>
-  </footer>
-</body>
-</html>
+  </div>
+</section>
+</main>
+<footer class="hj-v4-footer">
+  <div class="hj-v4-wrap">
+    <div class="hj-v4-footer-grid">
+      <div class="hj-v4-brand-block">
+        <a class="hj-v4-brand" href="#top" aria-label="heyJengo, sayfanın başına dön"><img src="assets/app-icon.webp" alt="" width="48" height="48" loading="lazy"><span>heyJengo</span></a>
+        <p>Konuş. Oyna. İlerle.<br>Her gün, biraz daha senin İngilizcen.</p>
+      </div>
+      <nav class="hj-v4-nav" aria-labelledby="hj-v4-discover-title">
+        <h2 id="hj-v4-discover-title">Keşfet</h2>
+        <ul>
+          <li><a href="#ozellikler">Öğrenme yolun</a></li>
+          <li><a href="#jai">JAI ile konuş</a></li>
+          <li><a href="#oyunlar">Oyunlarla pratik</a></li>
+          <li><a href="#gelisim">Gelişimini gör</a></li>
+        </ul>
+      </nav>
+      <nav class="hj-v4-nav" aria-labelledby="hj-v4-start-title">
+        <h2 id="hj-v4-start-title">Bir adım at</h2>
+        <ul>
+          <li><button type="button" data-open="conversation">Konuşmayı dene <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></button></li>
+          <li><button type="button" data-open="app">Uygulamayı keşfet <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></button></li>
+          <li><a href="#sorular">Sık sorulanlar</a></li>
+          <li><a href="/gizlilik/">Gizlilik ve KVKK</a></li>
+          <li><a href="/destek/">Destek</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="hj-v4-signature" aria-hidden="true"><span>heyJengo</span><span class="hj-v4-signature-dot"></span></div>
+    <div class="hj-v4-baseline">
+      <p>Birlikte, her gün bir adım.</p>
+      <a href="#top">Başa dön <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<dialog id="preview-dialog" aria-labelledby="dialog-title"><button class="dialog-close icon-button" aria-label="Pencereyi kapat"><svg class="icon"><use href="#close"/></svg></button><div id="dialog-content"></div></dialog>
+</body></html>

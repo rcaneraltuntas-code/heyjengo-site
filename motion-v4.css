@@ -1,0 +1,149 @@
+/* Revision 04: editorial scroll choreography.
+   Load after styles.css. Device geometry and its existing transform stay intact.
+   Nothing is hidden while waiting for JavaScript or IntersectionObserver. */
+.js :where(#ozellikler, #jai, #oyunlar, #gelisim, #sorular) .reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+.js :where(#ozellikler, #jai, #oyunlar, #gelisim, #sorular) .reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* Replace the older animation on these four layers, keeping their base transform. */
+.route-art .route-back,
+.route-art .route-front,
+.jai-art .jai-phone,
+.progress-art .progress-rise {
+  animation: none;
+}
+
+/* These values are static per layer. Only translate/rotate are animated. */
+.route-back { --mv4-y-in: -28px; --mv4-y-out: 18px; --mv4-r-in: -2deg; --mv4-r-out: 1deg; }
+.route-front { --mv4-y-in: 28px; --mv4-y-out: -28px; --mv4-r-in: 2deg; --mv4-r-out: -1deg; }
+.route-orbit { --mv4-y-in: 24px; --mv4-y-out: -16px; }
+.route-label { --mv4-y-in: 36px; --mv4-y-out: -30px; --mv4-r-in: 2deg; --mv4-r-out: -1deg; }
+.vocab-back { --mv4-y-in: 24px; --mv4-y-out: -16px; --mv4-r-in: -1.5deg; --mv4-r-out: 1deg; }
+.vocab-front { --mv4-y-in: 28px; --mv4-y-out: -26px; --mv4-r-in: 2deg; --mv4-r-out: -1deg; }
+.word-a { --mv4-y-in: -24px; --mv4-y-out: 18px; --mv4-r-in: -3deg; --mv4-r-out: 1.5deg; }
+.word-b { --mv4-y-in: 36px; --mv4-y-out: -30px; --mv4-r-in: 3deg; --mv4-r-out: -1.5deg; }
+.listen-phone { --mv4-y-in: 28px; --mv4-y-out: -22px; --mv4-r-in: -1.5deg; --mv4-r-out: 0.75deg; }
+.sound-rings { --mv4-y-in: -18px; --mv4-y-out: 18px; }
+.sound-bars { --mv4-y-in: 36px; --mv4-y-out: -28px; --mv4-r-in: 2deg; --mv4-r-out: -1deg; }
+.jai-phone { --mv4-y-in: 28px; --mv4-y-out: -24px; --mv4-r-in: 1.5deg; --mv4-r-out: -0.75deg; }
+.jai-orbit { --mv4-y-in: 36px; --mv4-y-out: -36px; --mv4-r-in: -3deg; --mv4-r-out: 2deg; }
+.jai-label { --mv4-y-in: 36px; --mv4-y-out: -36px; --mv4-r-in: 2deg; --mv4-r-out: -1deg; }
+.pizza-phone { --mv4-y-in: 28px; --mv4-y-out: -18px; --mv4-r-in: 1deg; --mv4-r-out: -0.5deg; }
+.detective-phone { --mv4-y-in: 28px; --mv4-y-out: -28px; --mv4-r-in: -2.5deg; --mv4-r-out: 1.25deg; }
+.picture-phone { --mv4-y-in: 28px; --mv4-y-out: -28px; --mv4-r-in: 2.5deg; --mv4-r-out: -1.25deg; }
+.games-world { --mv4-y-in: 36px; --mv4-y-out: -36px; --mv4-r-in: -2deg; --mv4-r-out: 1.5deg; }
+.summary-phone { --mv4-y-in: 28px; --mv4-y-out: -22px; --mv4-r-in: -1.5deg; --mv4-r-out: 0.75deg; }
+.profile-phone { --mv4-y-in: 28px; --mv4-y-out: -28px; --mv4-r-in: 1.5deg; --mv4-r-out: -0.75deg; }
+.progress-rise { --mv4-y-in: 36px; --mv4-y-out: -36px; --mv4-r-in: -3deg; --mv4-r-out: 2deg; }
+.progress-label { --mv4-y-in: 36px; --mv4-y-out: -28px; --mv4-r-in: 2deg; --mv4-r-out: -1deg; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* A sequence finishes within 700ms, including the longest stagger. */
+  .mv4-reveal-item.mv4-enter {
+    animation: mv4-copy-in 520ms cubic-bezier(.16, 1, .3, 1) both;
+    animation-delay: var(--mv4-delay, 0ms);
+  }
+  .mv4-reveal-item.mv4-enter:focus-within {
+    animation: none;
+  }
+  .level-journey.mv4-sequence-played::before {
+    transform-origin: left center;
+    animation: mv4-journey-line 680ms cubic-bezier(.22, 1, .36, 1) both;
+  }
+  .sound-bars.mv4-sequence-played > i {
+    animation: mv4-sound-once 600ms ease-out both;
+  }
+  .sound-bars.mv4-sequence-played > i:nth-child(3n) { animation-delay: 40ms; }
+  .sound-bars.mv4-sequence-played > i:nth-child(2n) { animation-delay: 80ms; }
+
+  /* Fallback is a finite entrance. It never polls scroll or rewrites transform. */
+  .mv4-fallback .mv4-layer.mv4-scene-enter {
+    animation: mv4-scene-in 680ms cubic-bezier(.16, 1, .3, 1) both;
+  }
+  @keyframes mv4-copy-in {
+    from { opacity: .12; translate: 0 24px; }
+    to { opacity: 1; translate: 0 0; }
+  }
+  @keyframes mv4-scene-in {
+    from { translate: 0 var(--mv4-y-in, 24px); rotate: var(--mv4-r-in, 0deg); }
+    to { translate: 0 0; rotate: 0deg; }
+  }
+  @keyframes mv4-journey-line {
+    from { scale: 0 1; }
+    to { scale: 1 1; }
+  }
+  @keyframes mv4-sound-once {
+    0% { scale: 1 .4; }
+    35% { scale: 1 1.15; }
+    70% { scale: 1 .75; }
+    100% { scale: 1 1; }
+  }
+
+  @supports (animation-timeline: view()) and (view-timeline-name: --mv4-route) {
+    .route-art { view-timeline-name: --mv4-route; }
+    .vocab-art { view-timeline-name: --mv4-vocab; }
+    .listening-art { view-timeline-name: --mv4-listening; }
+    .jai-art { view-timeline-name: --mv4-jai; }
+    .game-showcase { view-timeline-name: --mv4-games; }
+    .progress-art { view-timeline-name: --mv4-progress; }
+
+    /* The timeline belongs to each stationary scene, not its moving layers. */
+    :is(.route-art, .vocab-art, .listening-art, .jai-art, .game-showcase, .progress-art) > .mv4-layer {
+      animation: mv4-scene-drift linear both;
+      animation-range: entry 0% exit 100%;
+    }
+    .route-art > .mv4-layer { animation-timeline: --mv4-route; }
+    .vocab-art > .mv4-layer { animation-timeline: --mv4-vocab; }
+    .listening-art > .mv4-layer { animation-timeline: --mv4-listening; }
+    .jai-art > .mv4-layer { animation-timeline: --mv4-jai; }
+    .game-showcase > .mv4-layer { animation-timeline: --mv4-games; }
+    .progress-art > .mv4-layer { animation-timeline: --mv4-progress; }
+
+    @keyframes mv4-scene-drift {
+      0% { translate: 0 var(--mv4-y-in, 24px); rotate: var(--mv4-r-in, 0deg); }
+      50% { translate: 0 0; rotate: 0deg; }
+      100% { translate: 0 var(--mv4-y-out, -18px); rotate: var(--mv4-r-out, 0deg); }
+    }
+    @media (max-width: 789px) {
+      :is(.route-art, .vocab-art, .listening-art, .jai-art, .game-showcase, .progress-art) > .mv4-layer {
+        animation-name: mv4-scene-drift-mobile;
+      }
+      @keyframes mv4-scene-drift-mobile {
+        0% { translate: 0 calc(var(--mv4-y-in, 24px) * .45); rotate: calc(var(--mv4-r-in, 0deg) * .45); }
+        50% { translate: 0 0; rotate: 0deg; }
+        100% { translate: 0 calc(var(--mv4-y-out, -18px) * .45); rotate: calc(var(--mv4-r-out, 0deg) * .45); }
+      }
+    }
+  }
+  @media (max-width: 789px) {
+    .mv4-reveal-item.mv4-enter { animation-name: mv4-copy-in-mobile; }
+    .mv4-fallback .mv4-layer.mv4-scene-enter { animation-name: mv4-scene-in-mobile; }
+    @keyframes mv4-copy-in-mobile {
+      from { opacity: .2; translate: 0 16px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+    @keyframes mv4-scene-in-mobile {
+      from { translate: 0 calc(var(--mv4-y-in, 24px) * .45); rotate: calc(var(--mv4-r-in, 0deg) * .45); }
+      to { translate: 0 0; rotate: 0deg; }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv4-reveal-item,
+  .mv4-layer,
+  .level-journey.mv4-sequence-played::before,
+  .sound-bars.mv4-sequence-played > i {
+    animation: none !important;
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+  }
+  .mv4-reveal-item { opacity: 1 !important; }
+}
