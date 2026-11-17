@@ -102,6 +102,28 @@
     }
   }
 
+  // Measure store intent only; clicks are not app installs or QR scans.
+  document.querySelectorAll('a[data-store-placement]').forEach(link => {
+    const placement = link.dataset.storePlacement;
+    if (!['hero', 'qr_card', 'journey'].includes(placement)) return;
+    const trackStoreClick = event => {
+      if (event.defaultPrevented ||
+          (event.type === 'click' && event.button !== 0) ||
+          (event.type === 'auxclick' && event.button !== 1)) return;
+      if (!parsePreference(JSON.stringify(preference)) || preference.choice !== 'accepted') return;
+      if (typeof window.fbq !== 'function') return;
+      try {
+        window.fbq('trackCustom', placement === 'qr_card' ? 'QRCardClick' : 'AppStoreClick', {
+          placement: placement,
+          app_id: '6833951608',
+          destination: 'app_store'
+        });
+      } catch (_) { /* Measurement must never block the App Store link. */ }
+    };
+    link.addEventListener('click', trackStoreClick);
+    link.addEventListener('auxclick', trackStoreClick);
+  });
+
   const panel = document.createElement('section');
   panel.id = 'heyjengo-consent';
   panel.className = 'consent-panel';
@@ -111,7 +133,7 @@
   panel.setAttribute('aria-describedby', 'consent-description');
   panel.innerHTML = '<div class="consent-panel__heading"><h2 id="consent-title">Reklam ölçümü tercihin</h2>' +
     '<button class="consent-panel__close" type="button" aria-label="Tercih panelini kapat" hidden>×</button></div>' +
-    '<p id="consent-description">İzin verirsen ziyaretlerini Meta Pixel ile ölçerek reklamlarımızın performansını değerlendirebiliriz. Reddedersen bu ölçüm yapılmaz.</p>' +
+    '<p id="consent-description">İzin verirsen ziyaretlerini ve App Store bağlantılarına tıklamalarını Meta Pixel ile ölçerek reklamlarımızın performansını değerlendirebiliriz. Reddedersen bu ölçüm yapılmaz.</p>' +
     '<a class="consent-panel__policy" href="/gizlilik/#web-cerezleri">Web sitesi çerezleri hakkında</a>' +
     '<div class="consent-panel__actions"><button type="button" data-consent-choice="accepted">Kabul et</button>' +
     '<button type="button" data-consent-choice="rejected">Reddet</button></div>';
