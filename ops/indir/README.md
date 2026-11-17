@@ -4,7 +4,7 @@
 
 ## Request contract
 
-- Exact `/indir` and `/indir/` paths accept GET and HEAD. iPhone/iPad User-Agent values receive HTTP 302; all other devices receive the themed landing page via an internal `/indir/index.html` rewrite. Other methods receive 405 with `Allow: GET, HEAD`.
+- Exact `/indir` and `/indir/` paths accept GET and HEAD. Non-bot iPhone/iPad User-Agent values receive HTTP 302; known bots and all other devices receive the themed landing page via an internal `/indir/index.html` rewrite. Other methods receive 405 with `Allow: GET, HEAD`.
 - Every route response has `Cache-Control: no-store` and `Vary: User-Agent`.
 - Apple destination is `https://apps.apple.com/app/apple-store/id6833951608?pt=118863704&ct={campaign}&mt=8`. Provider `118863704` was verified using App Store Connect's campaign-link generator.
 - `ct` accepts `[A-Za-z0-9][A-Za-z0-9_-]{0,29}` only; missing/invalid values use `instagram_bio`. No request parameter can control the redirect host or path. Duplicate `ct` values use the server's first query value; frontend must use the same first-value rule.
@@ -50,7 +50,7 @@ ssh -i /Users/caner/.ssh/jengo_ses root@2.31.93.149 \
 
 The supplied RPC endpoint is `https://vlfokdfnidxslvnhpkzh.supabase.co/rest/v1/rpc/log_link_click`. `forwarder.py` runs independently of Caddy and reads the private JSONL. Eligible GET requests send only `p_campaign`, `p_device` (`ios`, `android`, `desktop`, `other`) and fixed `p_path: /indir`. Country and referrer are omitted because they are not known. There are no forwarding requests in the redirect path.
 
-The forwarder durably checkpoints each complete log record **before** sending, uses a three-second HTTP timeout, refuses redirects and never retries. A timeout, network failure or crash can lose an analytics record; it cannot replay an uncertain POST on restart. This is **at-most-once, best-effort delivery**, not exactly-once delivery. The service follows active-file rotation while running. If it is stopped across rotation, unread older rotated-file records are not replayed. A process lock prevents concurrent consumers. Corrupt checkpoint state stops the service rather than recounting from the beginning.
+The forwarder durably checkpoints each complete log record **before** sending, uses a three-second timeout for each blocking HTTP socket operation, refuses redirects and never retries. This is not a hard end-to-end deadline (for example DNS resolution may take longer). A timeout, network failure or crash can lose an analytics record; it cannot replay an uncertain POST on restart. This is **at-most-once, best-effort delivery**, not exactly-once delivery. The service follows active-file rotation while running. If it is stopped across rotation, unread older rotated-file records are not replayed. A process lock prevents concurrent consumers. Corrupt checkpoint state stops the service rather than recounting from the beginning.
 
 The systemd service reads `/etc/heyjengo-indir-forwarder.env`, owned by root with mode `0600`. Required fields are `HEYJENGO_SUPABASE_ANON_KEY` and `HEYJENGO_INDIR_LOG_PATH`; the latter is the host path of the Docker `/data` volume plus `/heyjengo-analytics/indir-v1.jsonl`. Never commit that environment file or key. Delivery logs contain success/failure and HTTP status, never credentials, HTTP error bodies or optional personal fields.
 
