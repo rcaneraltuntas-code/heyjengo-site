@@ -6,7 +6,7 @@
   const STORAGE_KEY = 'heyjengo:advertising-consent:v1';
   const VERSION = 1;
   const MAX_AGE = 180 * 24 * 60 * 60 * 1000;
-  const PIXEL_ID = '1700618818126812';
+  const PIXEL_ID = '1897946408285656';
   let preference = readPreference();
   let returnFocus = null;
   let pixelInitialized = false;
