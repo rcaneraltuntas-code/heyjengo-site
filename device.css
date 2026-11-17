@@ -1,0 +1,44 @@
+/* The generated frame is 873 × 1801. Its display is aligned to the
+   original 1206 × 2622 screenshots without stretching or letterboxing. */
+.phone {
+  aspect-ratio: 873 / 1801;
+  isolation: isolate;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+.phone::before {
+  content: "";
+  position: absolute;
+  inset: 2.5% 5%;
+  width: auto;
+  height: auto;
+  border-radius: 15.5% / 7.13%;
+  background: #000;
+  box-shadow: none;
+  z-index: 0;
+}
+.phone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  background: url("assets/iphone-orange-frame.png") center / 100% 100% no-repeat;
+  box-shadow: none;
+  pointer-events: none;
+  z-index: 1;
+}
+.phone > .display {
+  inset: 2.998334% 5.498282% auto 5.383734%;
+  aspect-ratio: 1206 / 2622;
+  border-radius: 15.5% / 7.13%;
+  background: #000;
+  z-index: 2;
+}
+.phone > .display > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
