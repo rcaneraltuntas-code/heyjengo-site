@@ -113,7 +113,7 @@
     });
   }
 
-  const dialogs = new Map(['app', 'conversation', 'quiz'].map((name) => [
+  const dialogs = new Map(['conversation', 'quiz'].map((name) => [
     name, document.getElementById(`${name}-dialog`)
   ]));
   const dialogState = new WeakMap();
