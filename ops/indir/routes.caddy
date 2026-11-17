@@ -1,0 +1,86 @@
+# Imported into the heyjengo.com site block by deploy.py.
+# This named logger has no hostname association; only the /indir handler uses it.
+log heyjengo_indir {
+	no_hostname
+	output file /data/heyjengo-analytics/indir-v1.jsonl {
+		mode 0600
+		roll_size 5MiB
+		roll_interval 24h
+		roll_keep 14
+		roll_keep_for 336h
+	}
+	format filter {
+		wrap json {
+			time_key time
+			time_format rfc3339
+			level_key ""
+			name_key ""
+			message_key ""
+			caller_key ""
+			stacktrace_key ""
+		}
+		fields {
+			request delete
+			resp_headers delete
+			bytes_read delete
+			user_id delete
+			duration delete
+			size delete
+			err_id delete
+			err_trace delete
+			error delete
+		}
+	}
+}
+
+map {query.ct} {indir_campaign} {
+	~^([A-Za-z0-9][A-Za-z0-9_-]{0,29})$ "${1}"
+	default instagram_bio
+}
+map {header.User-Agent} {indir_device} {indir_platform} {
+	~(?i)iPhone iphone ios
+	~(?i)iPad ipad ios
+	~(?i)Android android android
+	~(?i)(Windows|Macintosh|X11|CrOS) desktop other
+	default other other
+}
+map "{method}|{header.User-Agent}" {indir_traffic_class} {
+	~^HEAD\| head
+	~(?i)(bot|crawler|spider|facebookexternalhit|Facebot|meta-externalagent|meta-externalfetcher|WhatsApp|TelegramBot|Twitterbot|LinkedInBot|Slackbot|Discordbot|Pinterest|SkypeUriPreview|Applebot) bot
+	default browser
+}
+
+@indir path /indir /indir/
+handle @indir {
+	route {
+		log_name heyjengo_indir
+		log_append <campaign {indir_campaign}
+		log_append <device {indir_device}
+		log_append <platform {indir_platform}
+		log_append <traffic_class {indir_traffic_class}
+		log_append <method {method}
+		header {
+			Cache-Control "no-store"
+			Vary "User-Agent"
+		}
+		@unsupported not method GET HEAD
+		handle @unsupported {
+			log_append destination rejected
+			header Allow "GET, HEAD"
+			respond "Method Not Allowed" 405
+		}
+		@apple {
+			header_regexp User-Agent (?i)(iPhone|iPad)
+			not header_regexp User-Agent (?i)(bot|crawler|spider|facebookexternalhit|Facebot|meta-externalagent|meta-externalfetcher|WhatsApp|TelegramBot|Twitterbot|LinkedInBot|Slackbot|Discordbot|Pinterest|SkypeUriPreview|Applebot)
+		}
+		handle @apple {
+			log_append destination app_store
+			redir https://apps.apple.com/app/apple-store/id6833951608?pt=118863704&ct={indir_campaign}&mt=8 302
+		}
+		handle {
+			log_append destination landing
+			rewrite * /indir/index.html
+			file_server
+		}
+	}
+}
