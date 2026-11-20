@@ -12,7 +12,7 @@
   }
 
   function storeUrl(campaign) {
-    const url = new URL('https://apps.apple.com/app/apple-store/id6833951608');
+    const url = new URL('https://apps.apple.com/tr/app/apple-store/id6833951608');
     if (/^\d+$/.test(APPLE_PROVIDER_TOKEN)) url.searchParams.set('pt', APPLE_PROVIDER_TOKEN);
     url.searchParams.set('ct', typeof campaign === 'string' && CAMPAIGN_PATTERN.test(campaign) ? campaign : DEFAULT_CAMPAIGN);
     if (/^\d+$/.test(APPLE_PROVIDER_TOKEN)) url.searchParams.set('mt', '8');
@@ -31,8 +31,25 @@
     link.dataset.campaign = campaign;
   });
 
+  // The app is iPhone-only for now: Android visitors stay on this page instead of opening App Store.
+  const isAndroid = /Android/i.test(root.navigator.userAgent || '');
+  if (isAndroid) {
+    const availability = root.document.querySelector('.availability');
+    if (availability) {
+      availability.textContent = 'Şimdilik yalnızca iPhone’da.';
+      availability.setAttribute('role', 'status');
+      availability.classList.add('android-only');
+    }
+    root.document.querySelectorAll('[data-download-link]').forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        if (availability) availability.classList.add('android-only-flash');
+      });
+    });
+  }
+
   // iPadOS can present a desktop Mac user agent; normal iOS requests redirect on the server.
-  if (root.navigator.platform === 'MacIntel' && root.navigator.maxTouchPoints > 1) {
+  if (!isAndroid && root.navigator.platform === 'MacIntel' && root.navigator.maxTouchPoints > 1) {
     root.location.replace(destination);
     return;
   }

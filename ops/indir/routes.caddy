@@ -75,7 +75,7 @@ handle @indir {
 		}
 		handle @apple {
 			log_append destination app_store
-			redir https://apps.apple.com/app/apple-store/id6833951608?pt=118863704&ct={indir_campaign}&mt=8 302
+			redir https://apps.apple.com/tr/app/apple-store/id6833951608?pt=118863704&ct={indir_campaign}&mt=8 302
 		}
 		handle {
 			log_append destination landing

@@ -8,3 +8,4 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 .qr-link .qr-unavailable{display:grid;place-items:center;color:#111;text-align:center;font-size:14px;padding:12px}
+.availability.android-only{color:#fff;font-size:15px;font-weight:550}.availability.android-only-flash{color:#ffe579}
