@@ -6,7 +6,7 @@
 
 - Exact `/indir` and `/indir/` paths accept GET and HEAD. Non-bot iPhone/iPad User-Agent values receive HTTP 302; known bots and all other devices receive the themed landing page via an internal `/indir/index.html` rewrite. Other methods receive 405 with `Allow: GET, HEAD`.
 - Every route response has `Cache-Control: no-store` and `Vary: User-Agent`.
-- Apple destination is `https://apps.apple.com/app/apple-store/id6833951608?pt=118863704&ct={campaign}&mt=8`. Provider `118863704` was verified using App Store Connect's campaign-link generator.
+- Apple destination is `https://apps.apple.com/tr/app/apple-store/id6833951608?pt=118863704&ct={campaign}&mt=8`. Provider `118863704` was verified using App Store Connect's campaign-link generator.
 - `ct` accepts `[A-Za-z0-9][A-Za-z0-9_-]{0,29}` only; missing/invalid values use `instagram_bio`. No request parameter can control the redirect host or path. Duplicate `ct` values use the server's first query value; frontend must use the same first-value rule.
 - Desktop-style iPad detection is handled by the landing page using browser touch capability. Server logs describe the original server-observed UA classification, not that subsequent browser decision.
 - Bot identification is a conservative known-UA pattern, not proof a visitor is human. HEAD and known bots are counted separately. In-app iPhone browsers still receive the Apple redirect.
